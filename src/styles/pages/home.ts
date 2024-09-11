@@ -10,7 +10,7 @@ export const HomeContainer = styled("main", {
 });
 
 export const Product = styled(Link, {
-  background: "linear-gradient(180deg, #1ea483 0%, #7465d4 100%)",
+  background: "linear-gradient(180deg, #7465d4 0%, #1ea483 100%)",
   borderRadius: 8,
   cursor: "pointer",
   position: "relative",
@@ -51,7 +51,7 @@ export const Product = styled(Link, {
     span: {
       fontSize: "$xl",
       fontWeight: "bold",
-      color: "$green300",
+      color: "$purple300",
     },
   },
 
