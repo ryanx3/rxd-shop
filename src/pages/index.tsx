@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 
-import tshirt1 from "../assets/tshirts/1.png";
 import { stripe } from "@/lib/stripe";
 import { GetServerSideProps } from "next";
 import Stripe from "stripe";
@@ -24,6 +23,7 @@ export default function Home({ products }: HomeProps) {
       perView: 3,
       spacing: 48,
     },
+    loop: true,
   });
 
   return (
@@ -31,11 +31,16 @@ export default function Home({ products }: HomeProps) {
       {products.map((product) => {
         return (
           <Product key={product.id} className="keen-slider__slide">
-            <Image src={tshirt1} width={520} height={480} alt="" />
+            <Image src={product.imageUrl} width={520} height={480} alt="" />
 
             <footer>
               <strong>{product.name}</strong>
-              <span>{product.price}</span>
+              <span>
+                {product.price.toLocaleString("pt-PT", {
+                  style: "currency",
+                  currency: "EUR",
+                })}
+              </span>
             </footer>
           </Product>
         );
@@ -51,6 +56,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const products = response.data.map((product) => {
     const price = product.default_price as Stripe.Price;
+
     return {
       id: product.id,
       name: product.name,
