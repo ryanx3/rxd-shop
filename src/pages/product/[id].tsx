@@ -50,7 +50,7 @@ export default function Product({ product }: ProductProps) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: [{ params: { } }],
+    paths: [],
     fallback: true,
   };
 };
