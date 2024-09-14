@@ -1,6 +1,7 @@
 import Stripe from "stripe";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 
 import { ImageContainer, SuccessContainer } from "../styles/pages/success";
 import { GetServerSideProps } from "next";
@@ -16,6 +17,12 @@ export interface SuccessProps {
 
 export default function Success({ customerName, product }: SuccessProps) {
   return (
+    <>
+      <Head>
+        <title>Compra efetuada | RxD Shop</title>
+        <meta name="robots" content="noindex" />
+      </Head>
+
       <SuccessContainer>
         <h1>Compra efetuada</h1>
 
@@ -30,6 +37,7 @@ export default function Success({ customerName, product }: SuccessProps) {
 
         <Link href="/">Voltar ao catálogo</Link>
       </SuccessContainer>
+    </>
   );
 }
 
@@ -42,7 +50,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       },
     };
   }
-
+  
   const sessionId = String(query.session_id);
   const session = await stripe.checkout.sessions.retrieve(sessionId, {
     expand: ["line_items", "line_items.data.price.product"],
