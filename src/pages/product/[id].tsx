@@ -25,7 +25,6 @@ interface ProductProps {
 export default function Product({ product }: ProductProps) {
   const [creatingCheckout, setCreatingCheckout] = useState(false);
   const { isFallback } = useRouter();
-  // const router = useRouter();
 
   if (isFallback) {
     return <div>Carregando...</div>;
@@ -38,11 +37,7 @@ export default function Product({ product }: ProductProps) {
         priceId: product.defaultPriceId,
       });
       const { checkoutUrl } = response.data;
-      //Rota externa ( Stripe )
       window.location.href = checkoutUrl;
-
-      //Rotas internas (Dentro do app)
-      // router.push(checkoutURL)
     } catch (error) {
       setCreatingCheckout(false);
       alert("Falha ao redirecionar ao checkout");
@@ -81,11 +76,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-   if (!params || !params.id) {
-     return {
-       notFound: true, 
-     };
-   }
+  if (!params || !params.id) {
+    return {
+      notFound: true,
+    };
+  }
   const productId = String(params.id);
 
   const product = await stripe.products.retrieve(productId, {
