@@ -16,6 +16,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <Image src={LogoImg} alt="Logo do cabeçalho" />
         <CartButton variant="gray">
           <ShoppingBag size={24} />
+          <span className="badge">1</span>
         </CartButton>
       </Header>
       <Component {...pageProps} />
