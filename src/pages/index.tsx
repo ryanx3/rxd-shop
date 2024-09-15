@@ -2,11 +2,12 @@ import Stripe from "stripe";
 import Image from "next/image";
 import Head from "next/head";
 import "keen-slider/keen-slider.min.css";
-
+import { ShoppingBag } from "lucide-react";
 import { stripe } from "@/lib/stripe";
 import { useKeenSlider } from "keen-slider/react";
 import { GetStaticProps } from "next";
 import { HomeContainer, Product } from "@/styles/pages/home";
+import { CartButton } from "@/styles/pages/app";
 
 interface HomeProps {
   products: {
@@ -44,8 +45,11 @@ export default function Home({ products }: HomeProps) {
               <Image src={product.imageUrl} width={520} height={480} alt="" />
 
               <footer>
-                <strong>{product.name}</strong>
-                <span>{product.price}</span>
+                <div>
+                  <strong>{product.name}</strong>
+                  <span>{product.price}</span>
+                </div>
+                <CartButton variant="purple"><ShoppingBag/></CartButton>
               </footer>
             </Product>
           );
