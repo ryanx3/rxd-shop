@@ -1,27 +1,32 @@
 import { globalStyles } from "@/styles/global";
 import { AppProps } from "next/app";
-import { CartButton } from "@/styles/pages/app";
+import { CartButton, Header, Container } from "@/styles/pages/app";
 import { ShoppingBag } from "lucide-react";
 import LogoImg from "../assets/logo.svg";
 import Image from "next/image";
-
-import { Container, Header } from "@/styles/pages/app";
 import Link from "next/link";
+import SideMenu from "@/components/SideMenu";
+import { useState } from "react";
 
 globalStyles();
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
   return (
     <Container>
       <Header>
         <Link href={"/"}>
-        <Image src={LogoImg} alt="Logo RxD" />
+          <Image src={LogoImg} alt="Logo RxD" />
         </Link>
-        <CartButton variant="gray">
+        <CartButton onClick={() => setIsCartOpen(!isCartOpen)} variant="gray">
           <ShoppingBag size={24} />
           <span className="badge">1</span>
         </CartButton>
       </Header>
+
+      <SideMenu open={isCartOpen} onClose={() => setIsCartOpen(false)} />
+
       <Component {...pageProps} />
     </Container>
   );
