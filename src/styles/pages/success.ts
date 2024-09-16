@@ -12,7 +12,7 @@ export const SuccessContainer = styled("main", {
     fontSize: "$2xl",
     color: "$gray100",
   },
-  
+
   p: {
     fontSize: "$xl",
     color: "$gray300",
@@ -37,17 +37,25 @@ export const SuccessContainer = styled("main", {
 });
 
 export const ImageContainer = styled("div", {
-  width: "100%",
-  maxWidth: 130,
-  height: 145,
-  background: "linear-gradient(180deg, #1ea483 0%, #7465d4 100%)",
-  borderRadius: 8,
-  padding: "0.25rem",
-  marginTop: "4rem",
-
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+
+  width: "100%",
+  maxWidth: 145,
+  height: 145,
+  marginBottom: "2rem",
+
+  div: {
+    padding: "0.25rem",
+    background: "linear-gradient(180deg, #1ea483 0%, #7465d4 100%)",
+    borderRadius: "50%",
+    border: "1px solid $gray900",
+
+    marginLeft: "-2.5rem",
+
+    boxShadow: "0 10px 15px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.2)",
+  },
 
   img: {
     objectFit: "cover",
