@@ -41,7 +41,7 @@ export const ProductDetails = styled("div", {
     fontSize: "$2xl",
     color: "$purple300",
   },
-  
+
   p: {
     marginTop: "2.5rem",
     fontSize: "$md",
@@ -59,12 +59,12 @@ export const ProductDetails = styled("div", {
     cursor: "pointer",
     fontWeight: "bold",
     fontSize: "$md",
+    transition: "all 0.1s ease-in-out",
 
     "&:disabled": {
       opacity: 0.6,
-      cursor: "not-allowed"
-    }
-,
+      cursor: "not-allowed",
+    },
     "&:not(:disabled):hover": {
       backgroundColor: "$purple300",
     },
