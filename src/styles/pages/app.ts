@@ -27,7 +27,7 @@ export const CartButton = styled("button", {
   cursor: "pointer",
   border: "none",
   position: "relative",
-
+  transition: "all 0.1s ease-in-out",
   variants: {
     variant: {
       purple: {
@@ -46,8 +46,6 @@ export const CartButton = styled("button", {
   svg: {
     color: "$gray100",
   },
-
-  transition: "all 0.1s ease-in-out",
 
   "&:hover": {
     opacity: 0.8,
