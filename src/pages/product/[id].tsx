@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
 import { stripe } from "@/lib/stripe";
 
 import {
@@ -8,43 +7,37 @@ import {
   ProductDetails,
 } from "@/styles/pages/product";
 
-import axios from "axios";
 import Stripe from "stripe";
 import Image from "next/image";
 import Head from "next/head";
 
 import { GetStaticPaths, GetStaticProps } from "next";
+import { useCart } from "@/context/CartContext";
 
-interface ProductProps {
+export interface ProductProps {
   product: {
     id: string;
     name: string;
     imageUrl: string;
-    price: number;
+    price: string;
     description: string;
     defaultPriceId: string;
   };
 }
 
 export default function Product({ product }: ProductProps) {
-  const [creatingCheckout, setCreatingCheckout] = useState(false);
   const { isFallback } = useRouter();
+  const { addToCart } = useCart();
 
   if (isFallback) {
     return <div>Carregando...</div>;
   }
 
-  async function handleBuyButton() {
+  async function handleAddToCart() {
     try {
-      setCreatingCheckout(true);
-      const response = await axios.post("/api/checkout", {
-        priceId: product.defaultPriceId,
-      });
-      const { checkoutUrl } = response.data;
-      window.location.href = checkoutUrl;
+      addToCart(product);
     } catch (error) {
-      setCreatingCheckout(false);
-      alert("Falha ao redirecionar ao checkout");
+      alert("Falha ao adicionar produto na sacola.");
     }
   }
 
@@ -69,7 +62,7 @@ export default function Product({ product }: ProductProps) {
 
           <p>{product.description}</p>
 
-          <button disabled={creatingCheckout} onClick={handleBuyButton}>
+          <button onClick={handleAddToCart}>
             Colocar na sacola
           </button>
         </ProductDetails>
