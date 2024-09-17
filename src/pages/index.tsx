@@ -8,6 +8,7 @@ import { useKeenSlider } from "keen-slider/react";
 import { GetStaticProps } from "next";
 import { HomeContainer, Product } from "@/styles/pages/home";
 import { CartButton } from "@/styles/pages/app";
+import { useCart } from "@/context/CartContext";
 
 interface HomeProps {
   products: {
@@ -19,6 +20,8 @@ interface HomeProps {
 }
 
 export default function Home({ products }: HomeProps) {
+  const { addToCart } = useCart();
+
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 3,
@@ -49,7 +52,9 @@ export default function Home({ products }: HomeProps) {
                   <strong>{product.name}</strong>
                   <span>{product.price}</span>
                 </div>
-                <CartButton variant="purple"><ShoppingBag/></CartButton>
+                <CartButton onClick={() => addToCart(product)} variant="purple">
+                  <ShoppingBag />
+                </CartButton>
               </footer>
             </Product>
           );
