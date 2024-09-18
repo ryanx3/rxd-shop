@@ -1,14 +1,14 @@
-import { styled } from "..";
+import { Loader2 } from "lucide-react";
+import { keyframes, styled } from "..";
 
 export const ProductContainer = styled("main", {
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
-  alignItems: "stretch", //Se estique para ter o mesmo tamanho verticalmente
+  alignItems: "stretch",
   gap: "4rem",
   maxWidth: 1180,
-  margin: "0 auto"
-
-})
+  margin: "0 auto",
+});
 
 export const ImageContainer = styled("div", {
   width: "100%",
@@ -22,8 +22,8 @@ export const ImageContainer = styled("div", {
   justifyContent: "center",
 
   img: {
-    objectFit:"cover"
-  }
+    objectFit: "cover",
+  },
 });
 
 export const ProductDetails = styled("div", {
@@ -69,4 +69,15 @@ export const ProductDetails = styled("div", {
       backgroundColor: "$purple300",
     },
   },
+});
+
+const spin = keyframes({
+  "0%": { transform: "rotate(0deg)" },
+  "100%": { transform: "rotate(360deg)" },
+});
+
+// Estilize o ícone com a animação
+export const SpinnerIcon = styled(Loader2, {
+  animation: `${spin} 1s linear infinite`,
+  size: "48px",
 });
