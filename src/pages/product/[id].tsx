@@ -5,6 +5,7 @@ import {
   ImageContainer,
   ProductContainer,
   ProductDetails,
+  SpinnerIcon,
 } from "@/styles/pages/product";
 
 import Stripe from "stripe";
@@ -24,25 +25,29 @@ export interface ProductProps {
     defaultPriceId: string;
   };
 }
- 
+
 export default function Product({ product }: ProductProps) {
   const { isFallback } = useRouter();
 
   const { addToCart } = useCart();
 
   if (isFallback) {
-    return <div>Carregando...</div>;
+    return (
+      <div>
+        <SpinnerIcon />
+      </div>
+    );
   }
 
   async function handleAddToCart() {
     try {
-       addToCart({
-         id: product.id,
-         name: product.name,
-         imageUrl: product.imageUrl,
-         price: product.price,
-         defaultPriceId: product.defaultPriceId,
-       });
+      addToCart({
+        id: product.id,
+        name: product.name,
+        imageUrl: product.imageUrl,
+        price: product.price,
+        defaultPriceId: product.defaultPriceId,
+      });
     } catch (error) {
       alert("Falha ao adicionar produto na sacola.");
     }
