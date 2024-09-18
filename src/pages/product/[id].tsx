@@ -24,7 +24,7 @@ export interface ProductProps {
     defaultPriceId: string;
   };
 }
-
+ 
 export default function Product({ product }: ProductProps) {
   const { isFallback } = useRouter();
 
