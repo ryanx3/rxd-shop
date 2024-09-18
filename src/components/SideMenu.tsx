@@ -16,24 +16,29 @@ interface SideMenuProps {
 
 export default function SideMenu({ open, onClose }: SideMenuProps) {
   const { products, removeFromCart } = useCart();
-  
+
   async function handleBuyButton() {
     try {
-      const response = await axios.post("/api/checkout", {
+      const lineItems = products.map((product) => ({
         priceId: product.defaultPriceId,
+      }));
+
+      const response = await axios.post("/api/checkout", {
+        lineItems,
       });
       const { checkoutUrl } = response.data;
       window.location.href = checkoutUrl;
     } catch (error) {
+      console.error(error);
       alert("Falha ao redirecionar ao checkout.");
     }
   }
 
-const totalPrice = products.reduce(
-  (total, { price }) =>
-    total + parseFloat(price.replace("€", "").replace(",", ".")),
-  0
-);
+  const totalPrice = products.reduce(
+    (total, { price }) =>
+      total + parseFloat(price.replace("€", "").replace(",", ".")),
+    0
+  );
 
   return (
     <SideMenuContainer open={open}>
