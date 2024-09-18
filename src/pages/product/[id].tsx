@@ -36,7 +36,13 @@ export default function Product({ product }: ProductProps) {
 
   async function handleAddToCart() {
     try {
-      addToCart(product);
+       addToCart({
+         id: product.id,
+         name: product.name,
+         imageUrl: product.imageUrl,
+         price: product.price,
+         defaultPriceId: product.defaultPriceId,
+       });
     } catch (error) {
       alert("Falha ao adicionar produto na sacola.");
     }
