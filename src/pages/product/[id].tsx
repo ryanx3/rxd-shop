@@ -27,6 +27,7 @@ export interface ProductProps {
 
 export default function Product({ product }: ProductProps) {
   const { isFallback } = useRouter();
+
   const { addToCart } = useCart();
 
   if (isFallback) {
@@ -62,9 +63,7 @@ export default function Product({ product }: ProductProps) {
 
           <p>{product.description}</p>
 
-          <button onClick={handleAddToCart}>
-            Colocar na sacola
-          </button>
+          <button onClick={handleAddToCart}>Colocar na sacola</button>
         </ProductDetails>
       </ProductContainer>
     </>
