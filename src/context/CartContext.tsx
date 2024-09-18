@@ -5,13 +5,13 @@ export interface ProductProps {
   name: string;
   imageUrl: string;
   price: string;
+  defaultPriceId?: string;
 }
 
 interface CartContextProps {
   products: ProductProps[];
   addToCart: (product: ProductProps) => void;
   removeFromCart: (product_id: ProductProps["id"]) => void;
-  clearCart: () => void;
 }
 
 const CartContext = createContext({} as CartContextProps);
@@ -24,24 +24,28 @@ export function CartProvider({ children }: CartProviderProps) {
   const [products, setProducts] = useState<ProductProps[]>([]);
 
   const addToCart = (product: ProductProps) => {
-    setProducts((prevProducts) => [...prevProducts, product]);
+    setProducts((prevProducts) => {
+      const isProductInCart = prevProducts.some(
+        (product) => product.id === product.id
+      );
+
+      if (isProductInCart) {
+        alert("Esse produto já está na sua sacola.");
+        return prevProducts;
+      }
+
+      return [...prevProducts, product];
+    });
   };
 
-const removeFromCart = (product_id: string) => {
-  setProducts((prevProducts) => {
-    const indexToRemove = prevProducts.findIndex((product) => product.id === product_id);
-    if (indexToRemove === -1) return prevProducts;
-    return prevProducts.filter((_, index) => index !== indexToRemove);
-  })};
-
-  const clearCart = () => {
-    setProducts([]);
+  const removeFromCart = (product_id: string) => {
+    setProducts((prevProducts) =>
+      prevProducts.filter((product) => product.id !== product_id)
+    );
   };
 
   return (
-    <CartContext.Provider
-      value={{ products, addToCart, removeFromCart, clearCart }}
-    >
+    <CartContext.Provider value={{ products, addToCart, removeFromCart }}>
       {children}
     </CartContext.Provider>
   );
