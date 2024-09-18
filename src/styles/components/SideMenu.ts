@@ -139,3 +139,22 @@ export const CartFooter = styled("footer", {
     },
   },
 });
+
+export const EmptyCartContainer = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  height: "100vh",
+  color: "$purple500",
+
+  svg: {
+    marginBottom: "1rem",
+  },
+
+  p: {
+    fontSize: "$lg",
+    color: "$gray100",
+    textAlign: "center",
+  },
+});

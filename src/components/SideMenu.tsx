@@ -3,10 +3,11 @@ import {
   CartContent,
   CartFooter,
   CartItem,
+  EmptyCartContainer,
   SideMenuContainer,
 } from "@/styles/components/SideMenu";
 import axios from "axios";
-import { X } from "lucide-react";
+import { ShoppingCart, X } from "lucide-react";
 import Image from "next/image";
 
 interface SideMenuProps {
@@ -51,7 +52,10 @@ export default function SideMenu({ open, onClose }: SideMenuProps) {
 
       <CartContent>
         {products.length === 0 ? (
-          <p>Seu carrinho está vazio</p>
+          <EmptyCartContainer>
+            <ShoppingCart size={64} />
+            <p>Seu carrinho está vazio</p>
+          </EmptyCartContainer>
         ) : (
           products.map((product) => (
             <CartItem key={product.id}>
