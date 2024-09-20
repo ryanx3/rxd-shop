@@ -14,6 +14,7 @@ globalStyles();
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
+  
   return (
     <CartProvider>
       <Container>
