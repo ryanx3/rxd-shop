@@ -26,7 +26,7 @@ export function CartProvider({ children }: CartProviderProps) {
   const addToCart = (product: ProductProps) => {
     setProducts((prevProducts) => {
       const isProductInCart = prevProducts.some(
-        (product) => product.id === product.id
+        (item) => product.id === item.id
       );
 
       if (isProductInCart) {
