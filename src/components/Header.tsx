@@ -7,7 +7,7 @@ import LogoImg from "../assets/logo.svg";
 import { HeaderContainer } from "@/styles/components/Header";
 
 interface HeaderProps {
-  onToggleCart: () => void; 
+  onToggleCart: () => void;
 }
 
 export default function Header({ onToggleCart }: HeaderProps) {

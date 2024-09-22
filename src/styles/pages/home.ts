@@ -15,7 +15,7 @@ export const Product = styled(Link, {
   cursor: "pointer",
   position: "relative",
   overflow: "hidden",
-  
+
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -45,7 +45,7 @@ export const Product = styled(Link, {
 
     div: {
       display: "flex",
-      flexDirection: "column"
+      flexDirection: "column",
     },
 
     strong: {

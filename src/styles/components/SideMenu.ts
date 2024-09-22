@@ -15,7 +15,7 @@ export const SideMenuContainer = styled("aside", {
   boxShadow: "-5px 0 5px rgba(0,0,0,0.5)",
   transform: "translateX(100%)",
   transition: "transform 0.3s ease-in-out",
-  
+
   padding: "3rem",
   display: "flex",
   flexDirection: "column",
@@ -48,9 +48,9 @@ export const SideMenuContainer = styled("aside", {
 
       "&:hover": {
         svg: {
-          scale:1.1
-        }
-      }
+          scale: 1.1,
+        },
+      },
     },
   },
 });
@@ -59,7 +59,7 @@ export const CartContent = styled("div", {
   display: "flex",
   flexDirection: "column",
   gap: "1rem",
-  overflowY: "auto"
+  overflowY: "auto",
 });
 
 export const CartItem = styled("div", {

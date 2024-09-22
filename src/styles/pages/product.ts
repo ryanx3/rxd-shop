@@ -76,7 +76,6 @@ const spin = keyframes({
   "100%": { transform: "rotate(360deg)" },
 });
 
-// Estilize o ícone com a animação
 export const SpinnerIcon = styled(Loader2, {
   animation: `${spin} 1s linear infinite`,
   size: "48px",
