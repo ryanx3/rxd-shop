@@ -52,7 +52,13 @@ export default function Home({ products }: HomeProps) {
                   <strong>{product.name}</strong>
                   <span>{product.price}</span>
                 </div>
-                <CartButton onClick={() => addToCart(product)} variant="purple">
+                <CartButton
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    addToCart(product);
+                  }}
+                  variant="purple"
+                >
                   <ShoppingBag />
                 </CartButton>
               </footer>
