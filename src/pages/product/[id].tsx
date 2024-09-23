@@ -52,7 +52,7 @@ export default function Product({ product }: ProductProps) {
       alert("Falha ao adicionar produto na sacola.");
     }
   }
- 
+
   return (
     <>
       <Head>

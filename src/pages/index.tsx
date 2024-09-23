@@ -52,7 +52,6 @@ export default function Home({ products }: HomeProps) {
                 className="keen-slider__slide"
                 prefetch={false}
               >
-                
                 <Image
                   src={product.imageUrl}
                   width={520}
