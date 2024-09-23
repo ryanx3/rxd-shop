@@ -49,6 +49,7 @@ export const CartButton = styled("button", {
     padding: "0.75rem",
     color: "$gray100",
     fontSize: "0.75rem",
+    fontWeight: "bold",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
