@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 export interface ProductProps {
   id: string;
@@ -43,6 +49,12 @@ export function CartProvider({ children }: CartProviderProps) {
       prevProducts.filter((product) => product.id !== product_id)
     );
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && products.length > 0) {
+      localStorage.setItem("@rxd:products", JSON.stringify(products));
+    }
+  }, [products]);
 
   return (
     <CartContext.Provider value={{ products, addToCart, removeFromCart }}>
