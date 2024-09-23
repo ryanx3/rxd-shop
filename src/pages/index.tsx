@@ -9,6 +9,7 @@ import { GetStaticProps } from "next";
 import { HomeContainer, Product } from "@/styles/pages/home";
 import { CartButton } from "@/styles/pages/app";
 import { useCart } from "@/context/CartContext";
+import { SpinnerIcon } from "@/styles/pages/product";
 
 interface HomeProps {
   products: {
@@ -16,6 +17,7 @@ interface HomeProps {
     name: string;
     imageUrl: string;
     price: string;
+    defaultPriceId: string;
   }[];
 }
 
@@ -37,34 +39,38 @@ export default function Home({ products }: HomeProps) {
       </Head>
 
       <HomeContainer ref={sliderRef} className="keen-slider">
-        {products.map((product) => {
-          return (
-            <Product
-              key={product.id}
-              href={`/product/${product.id}`}
-              className="keen-slider__slide"
-              prefetch={false}
-            >
-              <Image src={product.imageUrl} width={520} height={480} alt="" />
+        {!products ? (
+          <SpinnerIcon />
+        ) : (
+          products.map((product) => {
+            return (
+              <Product
+                key={product.id}
+                href={`/product/${product.id}`}
+                className="keen-slider__slide"
+                prefetch={false}
+              >
+                <Image src={product.imageUrl} width={520} height={480} alt="" />
 
-              <footer>
-                <div>
-                  <strong>{product.name}</strong>
-                  <span>{product.price}</span>
-                </div>
-                <CartButton
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    addToCart(product);
-                  }}
-                  variant="purple"
-                >
-                  <ShoppingBag />
-                </CartButton>
-              </footer>
-            </Product>
-          );
-        })}
+                <footer>
+                  <div>
+                    <strong>{product.name}</strong>
+                    <span>{product.price}</span>
+                  </div>
+                  <CartButton
+                    onClick={(e) => {
+                      e.preventDefault();
+                      addToCart(product);
+                    }}
+                    variant="purple"
+                  >
+                    <ShoppingBag />
+                  </CartButton>
+                </footer>
+              </Product>
+            );
+          })
+        )}
       </HomeContainer>
     </>
   );
@@ -86,6 +92,7 @@ export const getStaticProps: GetStaticProps = async () => {
         style: "currency",
         currency: "EUR",
       }).format(price.unit_amount! / 100),
+      defaultPriceId: price.id,
     };
   });
 
