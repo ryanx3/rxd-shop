@@ -10,6 +10,7 @@ import { HomeContainer, Product } from "@/styles/pages/home";
 import { CartButton } from "@/styles/pages/app";
 import { useCart } from "@/context/CartContext";
 import { SpinnerIcon } from "@/styles/pages/product";
+import { useState } from "react";
 
 interface HomeProps {
   products: {
@@ -23,6 +24,7 @@ interface HomeProps {
 
 export default function Home({ products }: HomeProps) {
   const { addToCart } = useCart();
+  const [isLoading, setIsLoading] = useState(true);
 
   const [sliderRef] = useKeenSlider({
     slides: {
@@ -50,7 +52,19 @@ export default function Home({ products }: HomeProps) {
                 className="keen-slider__slide"
                 prefetch={false}
               >
-                <Image src={product.imageUrl} width={520} height={480} alt="" />
+                
+                <Image
+                  src={product.imageUrl}
+                  width={520}
+                  height={480}
+                  alt=""
+                  onLoad={() => setIsLoading(false)}
+                  onError={() => setIsLoading(false)}
+                  style={{
+                    filter: isLoading ? "blur(20px)" : "none",
+                    transition: "filter 0.3s ease-in-out",
+                  }}
+                />
 
                 <footer>
                   <div>
