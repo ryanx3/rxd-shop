@@ -4,7 +4,7 @@ Este projeto é um **E-commerce Fictício** desenvolvido em **Next.js** com **Ty
 
 ## Imagens da Aplicação
 
-- **Página Inicial:** Apresenta os produtos disponíveis com opções de filtragem.
+- **Página Inicial:** Apresenta os produtos disponíveis em um slider.
 ![Página Inicial](./src/assets/readme1.png)
 
 - **Detalhes do Produto:** Fornece informações detalhadas sobre cada produto.
@@ -19,13 +19,13 @@ Este projeto é um **E-commerce Fictício** desenvolvido em **Next.js** com **Ty
 ## Tecnologias Utilizadas
 
 - **Next.js:** Framework React para aplicações web.
-- **TypeScript:** Superset do JavaScript para maior segurança na tipagem.
+- **TypeScript:** Superset do JavaScript para tipagem.
 - **Stitches:** Biblioteca para estilização.
 - **Stripe:** Plataforma de pagamentos.
 
 ## Funcionalidades
 
-- **Side Menu:** Permite a navegação fácil entre as páginas e acesso rápido aos produtos inseridos no carrinho.
+- **Side Menu:** Permite acesso rápido aos produtos inseridos no carrinho.
 - **Local Storage:** Armazena os produtos adicionados ao carrinho, mantendo a persistência mesmo após o fechamento do navegador.
 
 ## Como executar o projeto
