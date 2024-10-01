@@ -4,17 +4,17 @@ Este projeto é um **E-commerce Fictício** desenvolvido em **Next.js** com **Ty
 
 ## Imagens da Aplicação
 
-![Página Inicial](./src/assets/readme1.png)
 - **Página Inicial:** Apresenta os produtos disponíveis com opções de filtragem.
+![Página Inicial](./src/assets/readme1.png)
 
-![Detalhes do Produto](./src/assets/readme2.png)
 - **Detalhes do Produto:** Fornece informações detalhadas sobre cada produto.
+![Detalhes do Produto](./src/assets/readme2.png)
 
-![Página de Checkout](./src/assets/readme3.png)
 - **Página de Checkout:** Integração com o Stripe para processamento de pagamentos.
+![Página de Checkout](./src/assets/readme3.png)
 
-![Página de Sucesso](./src/assets/readme4.png)
 - **Página de Sucesso:** Confirmação de pedidos após finalização do pagamento.
+![Página de Sucesso](./src/assets/readme4.png)
 
 ## Tecnologias Utilizadas
 
@@ -48,11 +48,12 @@ npm run build
 
 # Inicie o servidor
 npm start
+```
 
-## Contribuição
+# Contribuição
 
 Sinta-se à vontade para contribuir! Faça um fork do projeto, crie uma branch para suas alterações e envie um pull request.
 
-## Licença
+# Licença
 
 Este projeto está licenciado sob a MIT License. Veja o arquivo `LICENSE` para mais detalhes.
